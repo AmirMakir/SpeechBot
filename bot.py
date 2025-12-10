@@ -9,7 +9,6 @@ from transformers import pipeline
 from dotenv import load_dotenv
 import logging
 import re
-import nltk
 from nltk.tokenize import sent_tokenize
 from datetime import datetime
 import utils
@@ -37,24 +36,6 @@ user_languages = {}
 user_stats = {}
 
 TRANSLATIONS = utils.TRANSLATIONS
-
-# -----------------------------
-# Model setup
-# -----------------------------
-try:
-
-    pipe = pipeline(
-        "automatic-speech-recognition",
-        model="openai/whisper-medium",
-        chunk_length_s=30,
-        return_timestamps=True,
-    )
-
-    logger.info("Model loaded successfully")
-
-except Exception as e:
-    logger.error(f"Error loading models: {e}")
-    raise
 
 # -----------------------------
 # API configuration
@@ -702,8 +683,19 @@ async def language_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.edit_message_text(t['main_menu'], parse_mode='HTML')
 
 
+pipe = None
+
+
 async def audio_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Audio message handler (supports Russian and English)"""
+    global pipe
+    if pipe is None:
+        pipe = pipeline(
+            "automatic-speech-recognition",
+            model="openai/whisper-medium",
+            chunk_length_s=30,
+            return_timestamps=True,
+        )
     user_id = update.effective_user.id
     ui_lang = user_languages.get(user_id, 'en')
     t = TRANSLATIONS[ui_lang]
