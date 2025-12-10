@@ -70,6 +70,14 @@ python bot.py
 4. Create a new API key
 5. Copy the key
 
+## 🐳 Docker Deployment (Optional)
+
+Build and run with Docker:
+```bash
+docker build -t speechbot .
+docker run -d --env-file .env speechbot
+```
+
 ## 📊 Usage
 
 1. Start conversation: `/start`

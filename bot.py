@@ -13,7 +13,6 @@ import nltk
 from nltk.tokenize import sent_tokenize
 from datetime import datetime
 import utils
-nltk.download('punkt_tab')
 
 # Logging setup
 logging.basicConfig(
