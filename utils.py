@@ -272,10 +272,8 @@ Russian 🇷🇺 and English 🇬🇧
 ALLOWED_TAGS = ["b", "i", "u", "code", "pre", "a", "blockquote"]
 
 def sanitize_html(text):
-    # Allowed tags pattern
     allowed = "|".join(ALLOWED_TAGS)
 
-    # Remove tags not in whitelist
     text = re.sub(
         rf"</?(?!({allowed})(\s+href=\"[^\"]+\")?)[a-zA-Z0-9]+.*?>",
         "",
