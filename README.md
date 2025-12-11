@@ -100,6 +100,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📧 Contact
 
-Nickname - [@AmirMakir](https://t.me/AmirMakir)
-
+Nickname (tg): [@AmirMakir](https://t.me/AmirMakir)   
+Medium story:[https://medium.com/@AmirMak/...](https://medium.com/@AmirMak/i-built-an-ai-system-that-analyzes-human-speech-de60f352020c)    
+Twitter: https://x.com/AmirMakirov      
 Project Link: [https://github.com/AmirMakir/SpeechBot](https://github.com/AmirMakir/SpeechBot)
